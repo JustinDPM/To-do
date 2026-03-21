@@ -1,3 +1,11 @@
+:root {
+    --background-color: #030636;
+    --principal-color: #0f0946;
+    --secundary-color: #3725d8;
+    --text-color: #ccc;
+    --bottom-color: #64c25b;
+}
+
 body {
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
@@ -5,4 +13,34 @@ body {
   margin: auto;
   max-width: 38rem;
   padding: 2rem;
+  background-color: var(--secundary-color);
+}
+
+h1 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  background-color: var(--background-color);
+  color: #ccc;
+  padding: 10px 15px;
+  border-radius: 8px;
+  width: 300px;
+  
+}
+
+li span {
+  flex: 0.8;
 }

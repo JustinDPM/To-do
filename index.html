@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello World!</title>
-
   </head>
   <body>
     <h1>To-do list</h1>
-    <input id="task-input">
-    <button id="add-task">Agregar tarea</button>
-    <p>Welcome to your Electron application.</p>
+    <div class="content">
+      <input id="task-input">
+      <button id="add-task">Agregar tarea</button>
+      <ul id="task-list"></ul>
+    </div>
     <script type="module" src="/src/renderer.js"></script>
   </body>
 </html>

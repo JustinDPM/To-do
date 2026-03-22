@@ -28,19 +28,44 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-
+ul {
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 7px;
+}
 li {
   display: flex;
   list-style: none;
   justify-content: space-between;
-  background-color: var(--background-color);
+  background-color: var(--secundary-color);
   color: #ccc;
   padding: 10px 15px;
   border-radius: 8px;
   width: 300px;
-  
+  margin-bottom: 15px;
+  cursor:pointer; 
 }
 
 li span {
   flex: 0.8;
+}
+
+li input[type="checkbox"] {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--bottom-color);
+}
+
+li button {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--bottom-color);
 }

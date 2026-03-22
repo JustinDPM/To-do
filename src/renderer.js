@@ -4,7 +4,9 @@ import './index.css';
  const taskInput = document.getElementById("task-input")
  const addTaskBtn = document.getElementById("add-task")
  const taskList = document.getElementById("task-list")
-
+ const dialog = document.getElementById("dialog-tasks")
+ const confirm = document.getElementById("confirm")
+ const cancel = document.getElementById("cancel")
 
 
 
@@ -46,9 +48,12 @@ import './index.css';
     const title = taskInput.value.trim()
     await window.api.addTask(title)
     rendererTasks()
+    dialog.close()
   }
     
-    addTaskBtn.addEventListener('click', handleAddTask);
+  addTaskBtn.addEventListener('click', () => dialog.showModal());
+  cancel.addEventListener('click', () => dialog.close());
+  confirm.addEventListener('click', handleAddTask)
 
 
  rendererTasks();

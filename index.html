@@ -7,10 +7,17 @@
   <body>
     <h1>To-do list</h1>
     <div class="content">
-      <input id="task-input">
       <button id="add-task">Agregar tarea</button>
       <ul id="task-list"></ul>
     </div>
+    <dialog id="dialog-tasks">
+      <h3>New Task</h3> 
+      <textarea id="task-input"></textarea>
+      <div id="foot-dialog">
+        <button id="cancel">cancel</button>
+        <button id="confirm">confirm</button>
+      </div>
+    </dialog>
     <script type="module" src="/src/renderer.js"></script>
   </body>
 </html>

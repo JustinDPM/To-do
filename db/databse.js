@@ -44,13 +44,20 @@ class AppDatabase {
 
     getAllTasks(){
         const stmt = this.db.prepare('SELECT * FROM tasks ORDER BY id DESC');
-        return stmt.all()
+        return stmt.all();
+    }
+
+    editTask(id, title){
+        const stmt = this.db.prepare('UPDATE tasks SET title = ? WHERE id = ?');        
+        const info = stmt.run(title, id);
+        return info.changes > 0;
     }
 
     close(){
         this.db.close();
         console.log("db closed")
     }
+
         
 }
 

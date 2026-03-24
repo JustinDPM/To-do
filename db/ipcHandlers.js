@@ -17,4 +17,8 @@ export default function setUpHandlers(db){
         return db.getAllTasks();
     })
 
+    ipcMain.handle('tasks:edit', (_, {id,title}) => {
+        return db.editTask(id, title);
+    })
+
 }

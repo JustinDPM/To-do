@@ -9,6 +9,8 @@ import './index.css';
  const confirm = document.getElementById("confirm")
  const cancel = document.getElementById("cancel")
 
+ let mode = "";
+ let actualID = null;
 
  const rendererTasks = async () =>  {
     const tasks = await window.api.getAllTasks();
@@ -42,7 +44,6 @@ import './index.css';
        }); 
       });
       
-
       const span = document.createElement('span');
       span.textContent = task.title;
 
@@ -55,20 +56,18 @@ import './index.css';
         rendererTasks();
       })
 
-      editBtn.addEventListener('click', async () => {
-        const actualid = task.id;
-        dialoTitle.textContent = "Edit task"
-        dialog.showModal();
-        confirm.onclick = async () =>  {
-          await window.api.editTask({id:actualid, title:taskInput.value.trim()})
-          rendererTasks();
-          dialog.close();
-        }
-      })
+    editBtn.addEventListener('click', () => {
+      mode = 'edit'
+      actualID = task.id
+      taskInput.value = task.title; 
+      dialoTitle.textContent = "Edit task";
+      dialog.showModal();
+    });
 
-      checkbox.addEventListener('change', async () => {
-        await window.api.markComplete({id:task.id, completed: checkbox.checked ? 1 : 0})
-      })
+    checkbox.addEventListener('change', async () => {
+      await window.api.markComplete({id:task.id, completed: checkbox.checked ? 1 : 0})
+      console.log(task.id)
+    })
 
       li.appendChild(span);
       li.appendChild(checkbox);
@@ -77,22 +76,27 @@ import './index.css';
        
     });
  }
-
-  const handleAddTask = async () =>{
-    const title = taskInput.value.trim()
-    await window.api.addTask(title)
-    rendererTasks()
-    dialog.close()
-  }
+  confirm.onclick = async () => {
+    let title = taskInput.value.trim()
+    if (mode === 'edit'){
+      await window.api.editTask({id:actualID,title:title});
+      rendererTasks();
+    } 
+    if (mode === 'add'){
+      await window.api.addTask(title);
+      rendererTasks();
+    }
+    rendererTasks();
+    dialog.close();
+  };
     
   addTaskBtn.addEventListener('click', () => {
+    mode = 'add'
+    taskInput.value = "";
     dialoTitle.textContent = "New Task"
-    dialog.showModal()
-    cancel.addEventListener('click', () => dialog.close());
-    confirm.addEventListener('click', handleAddTask)
+    dialog.showModal()  
   });
 
   cancel.addEventListener('click', () => dialog.close());
-
 
  rendererTasks();

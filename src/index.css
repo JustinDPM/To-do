@@ -1,9 +1,9 @@
 :root {
-    --background-color: #030636;
-    --principal-color: #0f0946;
-    --secundary-color: #3725d8;
+    --background-color: #bcdcee;
+    --principal-color: #559aaf;
+    --secundary-color: #66b6ce;
     --text-color: #ccc;
-    --bottom-color: #64c25b;
+    --bottom-color: #4bd33e;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
   margin: auto;
   max-width: 25rem;
   padding: 1rem;
-  background-color: var(--secundary-color);
+  background-color: var(--background-color);
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--background-color);
+  background-color: var(--principal-color);
   border-radius: 9px;
   padding: 10px;
 
@@ -72,11 +72,7 @@ li button {
     cursor: pointer;
     accent-color: var(--bottom-color);
 }
-
-#add-task {
-  display: flex;
-  align-items: center;
-  justify-content:center;
+button {
   background-color: var(--bottom-color);
   border: none;
   padding: 8px;
@@ -85,6 +81,18 @@ li button {
   height: 30px;
   font-size: 20px;
   cursor: pointer;
+    transition: 0.1s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px #467e8f;
+}
+
+#add-task {
+  display: flex;
+  align-items: center;
+  justify-content:center;
 }
 .name-list{
   display: flex;
@@ -99,8 +107,7 @@ li button {
   position: absolute;
   top: 100%;
   right: 0;
-  background: #333;
-  color: white;
+  background: var(--secundary-color);
   padding: 5px;
   border-radius: 6px;
   margin-top: 5px;
@@ -117,8 +124,38 @@ li button {
   align-items: center;
   text-align: center;
   width: 30PX; 
+  border-color: #272829;
+}
+
+.submenu-item {
+  background-color: var(--bottom-color);
 }
 
 .task-item {
   position: relative;
+}
+
+dialog {
+  background-color: var(--background-color);
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  color: #ccc;
+}
+dialog textarea {
+  resize: none;
+  background-color: var(--secundary-color);
+  color: var(--text-color);
+}
+#foot-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.button-dialog {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
 }
